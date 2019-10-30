@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("First Render (mounting)");
+    console.log("First Render");
     fetch('https://api.github.com/users/ChristopherHernandezW22')
       .then(res => res.json())
       .then(data => this.setState({ user:data }));
@@ -38,22 +38,5 @@ class App extends React.Component {
     );
   }
 }
-
-// followers={this.state.followers}
-
-// function UserInfo(props) {
-//   return (
-//     <div>
-//       <h2>{props.user.login}</h2>
-//       <p>{props.user.location}</p>
-//       <p>{props.user.url}</p>
-//       <div>
-//           {this.state.followers.map(follower => ( 
-//             <Card user={follower} key={follower.id} />
-//           ))}
-//       </div>
-//     </div>
-//   );
-// }
 
 export default App;

@@ -6,8 +6,8 @@ const CardExampleCard = (props) => (
     <Image src={props.user.avatar_url} wrapped ui={false} />
     {console.log(props)}
     <Card.Content>
-      <Card.Header>{props.user.login}</Card.Header>
       <Card.Header>{props.user.name}</Card.Header>
+      <Card.Header>{props.user.login}</Card.Header>      
     </Card.Content>
   </Card>
 )
