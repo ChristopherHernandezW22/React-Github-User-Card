@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import axios from 'axios';
 
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import Card from './Card';
@@ -15,12 +16,18 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log("First Render");
-    fetch('https://api.github.com/users/ChristopherHernandezW22')
-      .then(res => res.json())
-      .then(data => this.setState({ user:data }));
-    fetch('https://api.github.com/users/ChristopherHernandezW22/followers')
-      .then(res => res.json())
-      .then(data => this.setState({ followers:data }));
+    axios.get('https://api.github.com/users/ChristopherHernandezW22')
+      .then(res => 
+        {this.setState({ user:res.data })
+        return axios.get('https://api.github.com/users/ChristopherHernandezW22/followers')}
+        )
+      // .then(data => this.setState({ user:data }));
+    // axios.get('https://api.github.com/users/ChristopherHernandezW22/followers')
+      .then(res => this.setState({ followers:res.data }))
+      .catch(error => 
+        console.log(error)
+        )
+      // .then(data => this.setState({ followers:data }));
   }
 
   componentDidUpdate () {
